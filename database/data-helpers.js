@@ -5,9 +5,9 @@ const mongod = new MongoMemoryServer();
 const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
 const seed = require('./seed');
-const request = require('supertest');
-const app = require('../lib/app');
-const User = require('../lib/models/User');
+// const request = require('supertest');
+// const app = require('../lib/app');
+// const User = require('../lib/models/User');
 
 beforeAll(async() => {
   const uri = await mongod.getUri();
@@ -22,15 +22,15 @@ beforeEach(() => {
   return seed();
 });
 
-const agent = request.agent(app);
-beforeEach(() => {
-  return agent
-    .post('/api/v1/auth/login')
-    .send({
-      username: 'testusername0',
-      password: 'password1234'
-    });
-});
+// const agent = request.agent(app);
+// beforeEach(() => {
+//   return agent
+//     .post('/api/v1/auth/login')
+//     .send({
+//       username: 'testusername0',
+//       password: 'password1234'
+//     });
+// });
 
 afterAll(async() => {
   await mongoose.connection.close();
@@ -47,10 +47,10 @@ const prepare = model => {
   return prepareOne(model);
 };
 
-const getLoggedInUser = () => User.findOne({ username: 'testusername0' });
+// const getLoggedInUser = () => User.findOne({ username: 'testusername0' });
 
 module.exports = {
-  agent,
+  // agent,
   prepare,
-  getLoggedInUser
+  // getLoggedInUser
 };
