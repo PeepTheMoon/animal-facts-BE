@@ -23,14 +23,14 @@ describe('routes for AnimalFact model', () => {
   });
 
   //getting ECONNREFUSED- need to add http or https to the url?
-  
-  // it('gets all animal facts', async() => {
-  //   const facts = prepare(await AnimalFact.find());
 
-  //   return await request(app)
-  //     .get('api/v1/facts')
-  //     .then(res => {
-  //       expect(res.body).toEqual(facts);
-  //     });
-  // });
+  it('gets all animal facts', async() => {
+    const facts = prepare(await AnimalFact.find());
+
+    return await request(app)
+      .get('/api/v1/facts')
+      .then(res => {
+        expect(res.body).toEqual(facts);
+      });
+  });
 });
