@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
 const request = require('supertest');
 const app = require('../lib/app');
-// const User = require('../lib/models/User');
+const User = require('../lib/models/User');
 
 describe('auth routes', () => {
   beforeAll(async() => {
@@ -35,6 +35,28 @@ describe('auth routes', () => {
           _id: expect.any(String),
           username: 'username1',
           profileImage: 'image.png', 
+        });
+      });
+  });
+
+  it('logs in a user with correct username and password', async() => {
+    await User.create({
+      username: 'username1',
+      profileImage: 'image.png',
+      password: 'password'
+    });
+
+    return request(app)
+      .post('/api/v1/auth/login')
+      .send({
+        username: 'username1',
+        password: 'password'
+      })
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          username: 'username1',
+          profileImage: 'image.png',
         });
       });
   });

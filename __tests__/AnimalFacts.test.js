@@ -1,7 +1,6 @@
 require('dotenv').config();
 const app = require('../lib/app');
 const request = require('supertest');
-// const User = require('../lib/models/User'); 
 const { prepare } = require('../database/data-helpers');
 const AnimalFact = require ('../lib/models/AnimalFact.js');
 
