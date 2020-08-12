@@ -60,4 +60,20 @@ describe('auth routes', () => {
         });
       });
   });
+
+  it('verifies a signed up user', () => {
+    const agent = request.agent(app);
+    return agent
+      .post('/api/v1/auth/signup')
+      .send({ 
+        username: 'username1', 
+        password: 'password' })
+      .then(() => agent.get('/api/v1/auth/verify'))
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          username: 'username1'
+        });
+      });
+  });
 });
