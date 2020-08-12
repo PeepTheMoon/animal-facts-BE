@@ -5,7 +5,7 @@ const AnimalFact = require('../lib/models/AnimalFact');
 
 module.exports = async({ 
   // users = 10, 
-  animalFacts = 20 } = {}) => {
+  animalFacts = 1 } = {}) => {
   
   // const createdUsers = 
   // await User.create([...Array(users)].map((_, i) => ({
