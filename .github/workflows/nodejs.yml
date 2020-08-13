@@ -16,4 +16,4 @@ jobs:
     - run: npm test
       env:
         CI: true
-        appSecret: APP_SECRET
+        APP_SECRET: something
